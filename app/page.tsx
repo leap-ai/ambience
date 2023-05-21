@@ -9,7 +9,7 @@ export default function Home() {
   const [response, setResponse] = useState("");
 
   useEffect(() => {
-    fetch("/api/get-image")
+    fetch("https://ambience-kappa.vercel.app/api/get-image")
       .then((res) => res.json())
       .then((data) => setResponse(data.message));
   }, []);
