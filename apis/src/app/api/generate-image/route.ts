@@ -16,8 +16,8 @@ export async function GET(request: Request) {
     prompt: "panoramic view of a majestic mountain range, awe-inspiring",
     numberOfImages: 1,
     webhookUrl: process.env.INSERT_IMAGE_WEBHOOK_URL,
-    height: 1024,
-    width: 512,
+    height: 512,
+    width: 1024,
     upscaleBy: "x2",
   });
 
