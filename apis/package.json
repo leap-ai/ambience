@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@leap-ai/sdk": "^0.0.119",
     "@supabase/supabase-js": "^2.22.0",
     "@types/node": "20.2.3",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
+    "encoding": "^0.1.13",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
     "next": "13.4.3",

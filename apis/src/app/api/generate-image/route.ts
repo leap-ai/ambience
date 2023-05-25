@@ -1,18 +1,32 @@
+import { leap } from "@/lib/leap";
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
 
-// This route initiates a new image generation job using Leap
-// but does not wait for the job to complete.
+if (!process.env.INSERT_IMAGE_WEBHOOK_URL) {
+  throw new Error("Missing env var: INSERT_IMAGE_WEBHOOK_URL");
+}
+//  Check that INSERT_IMAGE_WEBHOOK_URL is a valid URL
+try {
+  new URL(process.env.INSERT_IMAGE_WEBHOOK_URL);
+} catch (error) {
+  throw new Error("Invalid env var: INSERT_IMAGE_WEBHOOK_URL");
+}
 
-export async function POST(request: Request) {
-  // TODO generate image with leap
+export async function GET(request: Request) {
+  console.log("ENDPOINT HIT");
 
-  // if (error) {
-  //   console.error(error);
-  //   return NextResponse.error();
-  // }
+  const { data, error } = await leap.generate.createInferenceJob({
+    prompt: "A cat",
+    numberOfImages: 1,
+    webhookUrl: process.env.INSERT_IMAGE_WEBHOOK_URL,
+  });
+
+  if (error) {
+    return NextResponse.json(error, {
+      status: 500,
+    });
+  }
 
   return NextResponse.json({
-    message: "Image generated",
+    data,
   });
 }
