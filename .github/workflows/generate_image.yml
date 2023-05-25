@@ -1,0 +1,40 @@
+name: Call Next.js Endpoint
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at 00:00
+
+jobs:
+  call_endpoint_on_schedule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: "yarn" # Enables caching of yarn dependencies
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Start Next.js App
+        run: |
+          yarn dev &
+          sleep 20 # Give the server some time to start
+
+      - name: Call Next.js Endpoint
+        run: yarn callEndpoint
+
+      - name: Cache Build Artifacts
+        uses: actions/cache@v2
+        with:
+          path: |
+            .next/cache
+            node_modules
+          key: ${{ runner.os }}-next-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-next-
