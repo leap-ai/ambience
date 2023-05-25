@@ -17,11 +17,11 @@ export async function POST(request: Request) {
   }
 
   console.log({ body });
-  console.log({ images: body.images });
-  console.log({ firstImage: body.images[0] });
+  console.log({ images: body.result.images });
+  console.log({ firstImage: body.result.images[0] });
 
   // Grab first image from body.images array
-  const image = body.images[0] as LeapImageSchema;
+  const image = body.result.images[0] as LeapImageSchema;
   console.log({ image });
 
   return NextResponse.json(body);
