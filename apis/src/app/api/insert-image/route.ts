@@ -16,15 +16,15 @@ export async function POST(request: Request) {
     return NextResponse.error();
   }
 
-  console.log({ body });
-  console.log({ images: body.result.images });
-  console.log({ firstImage: body.result.images[0] });
+  //   If there are no images in the result, return an error
+  if (!body.result.images || body.result.images.length === 0) {
+    console.error(body);
+    return NextResponse.error();
+  }
 
   // Grab first image from body.images array
   const image = body.result.images[0] as LeapImageSchema;
-  console.log({ image });
-
-  return NextResponse.json(body);
+  console.log({ imageUri: image.uri });
 
   const { data, error } = await supabase.from("images").insert([
     {
@@ -39,5 +39,6 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     message: "Image inserted",
+    data,
   });
 }
