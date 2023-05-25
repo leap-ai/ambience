@@ -18,6 +18,7 @@ export async function GET(request: Request) {
     webhookUrl: process.env.INSERT_IMAGE_WEBHOOK_URL,
     height: 1024,
     width: 512,
+    upscaleBy: "x2",
   });
 
   if (error) {
