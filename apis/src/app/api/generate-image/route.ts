@@ -1,21 +1,18 @@
 import { NextResponse } from "next/server";
-
 import { supabase } from "@/lib/supabase";
 
-export async function GET(request: Request) {
-  const { data, error } = await supabase.from("images").insert([
-    {
-      imageUrl:
-        "https://static.tryleap.ai/image-gen-a7202a89-dd86-4f23-ba1b-91d54e5ed5bf/generated_images/4.png",
-    },
-  ]);
+// This route initiates a new image generation job using Leap
+// but does not wait for the job to complete.
 
-  if (error) {
-    console.error(error);
-    return NextResponse.error();
-  }
+export async function POST(request: Request) {
+  // TODO generate image with leap
+
+  // if (error) {
+  //   console.error(error);
+  //   return NextResponse.error();
+  // }
 
   return NextResponse.json({
-    message: "Image inserted",
+    message: "Image generated",
   });
 }
