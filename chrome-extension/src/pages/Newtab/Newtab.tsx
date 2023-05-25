@@ -10,13 +10,15 @@ const Newtab = () => {
 
   useEffect(() => {
     // Call API to fetch the image
-    fetch('https://ambience-b5jiwzxz7-leap-ai.vercel.app/api/get-image')
+    fetch('https://ambience-kappa.vercel.app/api/get-image')
       .then((response) => {
         console.log(response);
         return response.json();
       })
       .then((body) => {
         // Check if imageUrl is valid
+
+        console.log(body);
         if (!body.imageUrl) {
           throw new Error('Invalid image url');
         }
