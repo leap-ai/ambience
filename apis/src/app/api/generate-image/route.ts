@@ -12,8 +12,6 @@ try {
 }
 
 export async function GET(request: Request) {
-  console.log("ENDPOINT HIT");
-
   const { data, error } = await leap.generate.createInferenceJob({
     prompt: "A cat",
     numberOfImages: 1,
