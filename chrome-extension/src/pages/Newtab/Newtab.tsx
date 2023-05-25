@@ -13,10 +13,15 @@ const Newtab = () => {
     fetch('https://ambience-b5jiwzxz7-leap-ai.vercel.app/api/get-image')
       .then((response) => {
         console.log(response);
-        return response.text();
+        return response.json();
       })
-      .then((text) => {
-        setImageUrl(text);
+      .then((body) => {
+        // Check if imageUrl is valid
+        if (!body.imageUrl) {
+          throw new Error('Invalid image url');
+        }
+
+        setImageUrl(body.imageUrl);
       })
       .catch((err) => {
         console.log(err);
