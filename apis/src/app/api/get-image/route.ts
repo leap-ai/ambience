@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 
 import { supabase } from "@/lib/supabase";
 
+export const runtime = "edge";
+export const revalidate = 60;
+
 export async function GET(request: Request) {
   let { data: images, error } = await supabase
     .from("images")
