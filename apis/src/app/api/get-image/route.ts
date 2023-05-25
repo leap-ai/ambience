@@ -20,8 +20,8 @@ export async function GET(request: Request) {
 
   return NextResponse.json(images[0], {
     headers: {
-      "content-type": "application/json",
-      "cache-control": "max-age=0, s-maxage=60",
+      "Content-Type": "application/json",
+      "Cache-Control": "max-age=0, s-maxage=60",
     },
   });
 }
