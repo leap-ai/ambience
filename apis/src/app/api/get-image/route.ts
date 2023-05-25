@@ -18,5 +18,11 @@ export async function GET(request: Request) {
     return NextResponse.error();
   }
 
-  return NextResponse.json(images[0]);
+  return NextResponse.json(images[0], {
+    headers: {
+      "content-type": "application/json",
+      "cache-control":
+        "public, max-age=0, s-maxage=60, stale-while-revalidate=60",
+    },
+  });
 }
