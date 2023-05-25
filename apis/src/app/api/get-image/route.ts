@@ -21,8 +21,7 @@ export async function GET(request: Request) {
   return NextResponse.json(images[0], {
     headers: {
       "content-type": "application/json",
-      "cache-control":
-        "public, max-age=0, s-maxage=60, stale-while-revalidate=60",
+      "cache-control": "max-age=0, s-maxage=60",
     },
   });
 }
