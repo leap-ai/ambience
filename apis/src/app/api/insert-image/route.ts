@@ -5,13 +5,20 @@ import { NextResponse } from "next/server";
 // This route catches the webhook response from Leap's API and then inserts the image URL into the database.
 
 export async function POST(request: Request) {
-  // grab body
   const body = await request.json();
-  console.log(body);
-  console.log({ test: "test" });
-  console.log({
-    body: request.body,
-  });
+
+  if (!body) {
+    return NextResponse.error();
+  }
+
+  if (body && body.succeeded === false) {
+    console.error(body);
+    return NextResponse.error();
+  }
+
+  // Grab first image from body.images array
+  const image = body.images[0];
+  console.log({ image });
 
   return NextResponse.json(body);
 
