@@ -6,16 +6,16 @@ export async function GET(request: Request) {
   const { data, error } = await supabase.from("images").insert([
     {
       imageUrl:
-        "https://static.tryleap.ai/image-gen-aba3c7ae-a57d-43ac-b4bf-a3bb98df05db/generated_images/3.png",
+        "https://static.tryleap.ai/image-gen-a7202a89-dd86-4f23-ba1b-91d54e5ed5bf/generated_images/4.png",
     },
   ]);
-
-  console.log({ data });
 
   if (error) {
     console.error(error);
     return NextResponse.error();
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json({
+    message: "Image inserted",
+  });
 }

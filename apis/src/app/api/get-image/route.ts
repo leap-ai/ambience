@@ -6,7 +6,8 @@ export async function GET(request: Request) {
   let { data: images, error } = await supabase
     .from("images")
     .select("id,imageUrl")
-    .limit(1);
+    .limit(1)
+    .order("created_at", { ascending: false });
 
   if (error) {
     console.error(error);
