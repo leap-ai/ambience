@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Newtab.css';
-import './Newtab.scss';
 
 const Newtab = () => {
   const [imageUrl, setImageUrl] = useState('');
@@ -50,7 +48,12 @@ const Newtab = () => {
         alignItems: 'center',
       }}
     >
-      <div className="time-container">
+      <div
+        style={{
+          color: 'white',
+          fontSize: '3rem',
+        }}
+      >
         <h1>{currentTime}</h1>
       </div>
     </div>

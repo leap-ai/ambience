@@ -1,8 +1,21 @@
 import { NextResponse } from "next/server";
 
+import { supabase } from "@/lib/supabase";
+
 export async function GET(request: Request) {
-  return NextResponse.json({
-    imageUrl:
-      "https://static.tryleap.ai/image-gen-aba3c7ae-a57d-43ac-b4bf-a3bb98df05db/generated_images/3.png",
-  });
+  let { data: images, error } = await supabase
+    .from("images")
+    .select("id,imageUrl")
+    .limit(1);
+
+  if (error) {
+    console.error(error);
+    return NextResponse.error();
+  }
+
+  if (!images || images.length === 0) {
+    return NextResponse.error();
+  }
+
+  return NextResponse.json(images[0]);
 }
