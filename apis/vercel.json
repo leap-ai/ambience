@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/generate-image",
-      "schedule": "* * * * *"
+      "schedule": "0 * * * *"
     }
   ]
 }

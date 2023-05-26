@@ -11,6 +11,7 @@ try {
   throw new Error("Invalid env var: INSERT_IMAGE_WEBHOOK_URL");
 }
 
+// Cannot use edge since it doesn't support XMLHttpRequest
 export const runtime = "nodejs";
 export const revalidate = 0;
 
