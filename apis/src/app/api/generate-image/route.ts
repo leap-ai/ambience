@@ -11,6 +11,9 @@ try {
   throw new Error("Invalid env var: INSERT_IMAGE_WEBHOOK_URL");
 }
 
+export const runtime = "edge";
+export const revalidate = 10;
+
 export async function GET(request: Request) {
   const { data, error } = await leap.generate.createInferenceJob({
     prompt: "panoramic view of a majestic mountain range, awe-inspiring",
