@@ -32,7 +32,7 @@ export async function GET(request: Request) {
         error,
       },
       {
-        status: 403,
+        status: 500,
       }
     );
   }
