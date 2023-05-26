@@ -2,7 +2,7 @@ name: Call Next.js Endpoint
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs daily at 00:00
+    - cron: "* * * * *" # Runs every minute
 
 jobs:
   call_endpoint_on_schedule:
