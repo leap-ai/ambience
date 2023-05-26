@@ -19,8 +19,8 @@ const MainDisplay = () => {
 
   return (
     <VStack color="white" fontSize="3rem" zIndex={1}>
-      <Heading size="2xl">{currentTime}</Heading>
-      <Text fontSize={'lg'}>Powered by Leap</Text>
+      <Heading size="4xl">{currentTime}</Heading>
+      <Text fontSize={'xl'}>Powered by Leap</Text>
     </VStack>
   );
 };
