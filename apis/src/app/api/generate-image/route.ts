@@ -11,7 +11,7 @@ try {
   throw new Error("Invalid env var: INSERT_IMAGE_WEBHOOK_URL");
 }
 
-export const runtime = "edge";
+export const runtime = "node";
 export const revalidate = 0;
 
 export async function GET(request: Request) {
