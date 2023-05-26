@@ -25,9 +25,14 @@ export async function GET(request: Request) {
   });
 
   if (error) {
-    return NextResponse.json(error, {
-      status: 500,
-    });
+    return NextResponse.json(
+      {
+        error,
+      },
+      {
+        status: 500,
+      }
+    );
   }
 
   return NextResponse.json({
