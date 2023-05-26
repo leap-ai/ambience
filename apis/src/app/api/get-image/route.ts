@@ -21,5 +21,11 @@ export async function GET(request: Request) {
     return NextResponse.error();
   }
 
-  return NextResponse.json(images[0]);
+  return NextResponse.json(images[0], {
+    // add CORS headers
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET",
+    },
+  });
 }
