@@ -21,10 +21,5 @@ export async function GET(request: Request) {
     return NextResponse.error();
   }
 
-  return NextResponse.json(images[0], {
-    headers: {
-      "Content-Type": "application/json",
-      "Cache-Control": "max-age=0, s-maxage=60",
-    },
-  });
+  return NextResponse.json(images[0]);
 }
