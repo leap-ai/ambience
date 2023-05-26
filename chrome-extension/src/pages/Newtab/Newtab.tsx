@@ -1,62 +1,66 @@
 import React, { useEffect, useState } from 'react';
+import { Box, VStack } from '@chakra-ui/react';
+import MainDisplay from './components/MainDisplay';
+
+const fetchImage = async () => {
+  try {
+    const response = await fetch(
+      'https://ambience-kappa.vercel.app/api/get-image'
+    );
+    const body = await response.json();
+
+    if (!body.imageUrl) {
+      throw new Error('Invalid image url');
+    }
+
+    return body.imageUrl;
+  } catch (err) {
+    console.error(err);
+    return '';
+  }
+};
 
 const Newtab = () => {
   const [imageUrl, setImageUrl] = useState('');
-  const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString()
-  );
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    // Call API to fetch the image
-    fetch('https://ambience-kappa.vercel.app/api/get-image')
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((body) => {
-        // Check if imageUrl is valid
-
-        console.log(body);
-        if (!body.imageUrl) {
-          throw new Error('Invalid image url');
-        }
-
-        setImageUrl(body.imageUrl);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    fetchImage().then(setImageUrl);
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date().toLocaleTimeString());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleImageLoaded = () => {
+    setImageLoaded(true);
+  };
 
   return (
-    <div
+    <VStack
+      bg="black"
       className="App"
-      style={{
-        backgroundImage: `url(${imageUrl})`,
-        height: '100vh',
-        width: '100vw',
-        backgroundSize: 'cover',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
+      h="100vh"
+      w="100vw"
+      justifyContent="center"
+      alignItems="center"
+      position="relative"
+      overflow="hidden"
+      zIndex={-1}
     >
-      <div
+      <img
+        src={imageUrl}
+        alt="Background"
+        onLoad={handleImageLoaded}
         style={{
-          color: 'white',
-          fontSize: '3rem',
+          position: 'absolute',
+          zIndex: 1,
+          height: '100%',
+          width: '100%',
+          objectFit: 'cover',
+          opacity: imageLoaded ? 1 : 0,
+          transition: 'opacity 0.8s ease-in',
         }}
-      >
-        <h1>{currentTime}</h1>
-      </div>
-    </div>
+      />
+
+      <MainDisplay />
+    </VStack>
   );
 };
 
