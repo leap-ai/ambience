@@ -25,12 +25,13 @@ export async function GET(request: Request) {
   });
 
   if (error) {
+    console.log(error);
     return NextResponse.json(
       {
         error,
       },
       {
-        status: 500,
+        status: 403,
       }
     );
   }
