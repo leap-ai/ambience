@@ -25,7 +25,8 @@ export async function GET(request: Request) {
   });
 
   if (error) {
-    console.log(error);
+    console.log(error, process.versions.node);
+    // print the current node runtime
     return NextResponse.json(
       {
         error,
