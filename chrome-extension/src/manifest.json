@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
+  "version": "1.0.0",
   "name": "Ambience",
-  "description": "Get AI generated background",
+  "description": "Replace your new tab with limitless AI-generated wallpapers that refresh every hour.",
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
