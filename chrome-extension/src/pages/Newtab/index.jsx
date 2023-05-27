@@ -14,7 +14,6 @@ const theme = extendTheme({
       baseStyle: {
         dialog: {
           bg: 'blackAlpha.700',
-
           backdropFilter: 'blur(16px)',
         },
       },

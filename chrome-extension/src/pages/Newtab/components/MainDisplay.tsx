@@ -7,12 +7,11 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import { ImageObject } from '../Newtab';
 import AboutModal from './AboutModal';
 import PoweredByLeap from './PoweredByLeap';
 import Quote from './Quote';
 import SettingsModal from './SettingsModal';
-import { ImageObject } from '../Newtab';
-import ColorModeToggle from './ColorModeToggle';
 
 const getCurrentTime = () => {
   const dateObj = new Date();

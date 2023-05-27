@@ -1,19 +1,19 @@
-import React from 'react';
 import {
+  Button,
+  Heading,
+  IconButton,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  IconButton,
-  Text,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Stack,
-  Heading,
-  Button,
+  Text,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { useDisclosure } from '@chakra-ui/react';
+import React from 'react';
 import { FaCog } from 'react-icons/fa';
 
 function SettingsModal({ setName }: { setName: (name: string) => void }) {

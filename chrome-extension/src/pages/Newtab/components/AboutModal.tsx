@@ -15,11 +15,14 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
+import { FaCopy, FaDownload } from 'react-icons/fa';
 import { ImageObject } from '../Newtab';
-import { FaDownload } from 'react-icons/fa';
+import { useClipboard } from '@chakra-ui/react';
 
 function AboutModal({ image }: { image: ImageObject }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onCopy, hasCopied } = useClipboard(image.prompt);
+
   return (
     <>
       <Text
@@ -56,6 +59,9 @@ function AboutModal({ image }: { image: ImageObject }) {
                 <Box bg={'whiteAlpha.200'} p={4} rounded={'md'}>
                   <Text>{image.prompt}</Text>
                 </Box>
+                <Button rightIcon={<FaCopy />} onClick={onCopy}>
+                  {hasCopied ? 'Copied' : 'Copy'}
+                </Button>
               </Stack>
               <Stack>
                 <Heading size={'sm'}>Download Image</Heading>
@@ -70,7 +76,9 @@ function AboutModal({ image }: { image: ImageObject }) {
                   target="_blank"
                   href={image.imageUrl}
                   download
-                ></Button>
+                >
+                  Download
+                </Button>
               </Stack>
             </Stack>
           </ModalBody>

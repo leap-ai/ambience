@@ -1,4 +1,3 @@
-import React, { FormEvent, useState } from 'react';
 import {
   HStack,
   Heading,
@@ -7,6 +6,7 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import React, { FormEvent, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
 
 interface Props {
