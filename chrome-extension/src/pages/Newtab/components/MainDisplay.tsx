@@ -47,11 +47,16 @@ const MainDisplay = ({ name }: { name: string }) => {
         {/* <ColorModeToggle /> */}
       </HStack>
       <Spacer />
-      <VStack>
-        <Heading fontSize={'7rem'} shadow={'md'}>
+      <VStack userSelect={'none'}>
+        <Heading
+          fontSize={'7rem'}
+          textShadow={'0px 2px 4px rgba(0, 0, 0, 0.15)'}
+        >
           {currentTime}
         </Heading>
-        <Heading shadow={'md'}>{greeting}</Heading>
+        <Heading textShadow={'0px 2px 4px rgba(0, 0, 0, 0.15)'}>
+          {greeting}
+        </Heading>
       </VStack>
       <Spacer />
       <VStack position={'absolute'} bottom={4}>
