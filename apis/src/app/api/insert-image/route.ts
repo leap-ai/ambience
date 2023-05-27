@@ -29,6 +29,8 @@ export async function POST(request: Request) {
   const { data, error } = await supabase.from("images").insert([
     {
       imageUrl: image.uri,
+      prompt: body.result.prompt,
+      seed: body.result.seed,
     },
   ]);
 
