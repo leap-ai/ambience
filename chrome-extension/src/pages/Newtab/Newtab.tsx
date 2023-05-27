@@ -68,7 +68,7 @@ const Newtab = () => {
         {!name ? (
           <NameSelection setName={setName} />
         ) : (
-          <MainDisplay name={name} />
+          <MainDisplay name={name} setName={setName} />
         )}
       </VStack>
     </VStack>
