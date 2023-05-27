@@ -18,7 +18,7 @@ export default function PoweredByLeap() {
       transition="opacity 0.3s linear"
       as={'a'}
       target="_blank"
-      href="https://tryleap.ai?utm_source=ambience&utm_medium=extension&utm_campaign=ambience-extension"
+      href="https://tryleap.ai?utm_source=ambience&utm_medium=extension&utm_campaign=ambience-extension&ref=ambience-extension"
       _hover={{ opacity: 1 }}
     >
       <Text
