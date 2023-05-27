@@ -28,7 +28,5 @@ export default function Quote() {
 
   if (!quote) return <></>;
 
-  return (
-    <Text fontSize={'lg'}>"Every morning is an opportunity for success"</Text>
-  );
+  return <Text fontSize={'lg'}>"{quote}"</Text>;
 }
