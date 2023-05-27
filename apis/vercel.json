@@ -3,6 +3,10 @@
     {
       "path": "/api/generate-image",
       "schedule": "0 * * * *"
+    },
+    {
+      "path": "/api/generate-quote",
+      "schedule": "0 * * * *"
     }
   ]
 }
