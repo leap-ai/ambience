@@ -12,6 +12,7 @@ import PoweredByLeap from './PoweredByLeap';
 import Quote from './Quote';
 import SettingsModal from './SettingsModal';
 import { ImageObject } from '../Newtab';
+import ColorModeToggle from './ColorModeToggle';
 
 const getCurrentTime = () => {
   const dateObj = new Date();
@@ -67,12 +68,12 @@ const MainDisplay = ({
       <VStack userSelect={'none'} textAlign={'center'}>
         <Heading
           fontSize={'7rem'}
-          textShadow={'0px 2px 4px rgba(0, 0, 0, 0.15)'}
+          textShadow={'0px 4px 6px rgba(0, 0, 0, 0.4)'}
           lineHeight={1}
         >
           {currentTime}
         </Heading>
-        <Heading textShadow={'0px 2px 4px rgba(0, 0, 0, 0.15)'}>
+        <Heading textShadow={'0px 2px 4px rgba(0, 0, 0, 0.4)'}>
           {greeting}
         </Heading>
       </VStack>

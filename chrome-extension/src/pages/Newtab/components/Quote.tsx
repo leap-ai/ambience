@@ -31,6 +31,7 @@ export default function Quote() {
       fontSize={'lg'}
       opacity={quote ? 1 : 0}
       transition="opacity 0.7s linear"
+      textShadow={'0px 4px 6px rgba(0, 0, 0, 0.4)'}
     >
       {quote && `"${quote}"`}
     </Text>
