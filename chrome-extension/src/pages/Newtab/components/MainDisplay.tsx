@@ -68,12 +68,12 @@ const MainDisplay = ({
       <VStack userSelect={'none'} textAlign={'center'}>
         <Heading
           fontSize={'7rem'}
-          textShadow={'0px 4px 6px rgba(0, 0, 0, 0.4)'}
+          textShadow={'0px 4px 10px rgba(0, 0, 0, 0.3)'}
           lineHeight={1}
         >
           {currentTime}
         </Heading>
-        <Heading textShadow={'0px 2px 4px rgba(0, 0, 0, 0.4)'}>
+        <Heading textShadow={'0px 2px 10px rgba(0, 0, 0, 0.3)'}>
           {greeting}
         </Heading>
       </VStack>
