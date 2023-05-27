@@ -1,69 +1,61 @@
-import {
-  HStack,
-  Heading,
-  IconButton,
-  Spacer,
-  Text,
-  VStack,
-  useColorMode,
-} from '@chakra-ui/react';
+import { HStack, Heading, Spacer, Text, VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { FaMoon, FaSun } from 'react-icons/fa';
 import MoodSelector from './MoodSelector';
 import PoweredByLeap from './PoweredByLeap';
+import Quote from './Quote';
 
-const getCurrentTime = () =>
-  new Date().toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+const getCurrentTime = () => {
+  const dateObj = new Date();
+  const hours = dateObj.getHours();
+  const hours12 = hours % 12 || 12;
+  const minutes = dateObj.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHours = hours12 < 10 ? ` ${hours12}` : hours12;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  return `${formattedHours}:${formattedMinutes} ${ampm}`;
+};
 
-const getGreeting = () => {
+const getGreeting = (name: string) => {
   const currentHour = new Date().getHours();
   if (currentHour >= 5 && currentHour < 12) {
-    return 'Good Morning, Claudio.';
+    return `Good Morning, ${name}.`;
   } else if (currentHour >= 12 && currentHour < 18) {
-    return 'Good Afternoon, Claudio.';
+    return `Good Afternoon, ${name}.`;
   } else if (currentHour >= 18 && currentHour < 22) {
-    return 'Good Evening, Claudio.';
+    return `Good Evening, ${name}.`;
   } else {
-    return 'Good Night, Claudio.';
+    return `Good Night, ${name}.`;
   }
 };
 
-const MainDisplay = () => {
+const MainDisplay = ({ name }: { name: string }) => {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
-  const [greeting, setGreeting] = useState(getGreeting());
-  const { colorMode, toggleColorMode } = useColorMode();
+  const [greeting, setGreeting] = useState(getGreeting(name));
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(getCurrentTime());
-      setGreeting(getGreeting());
+      setGreeting(getGreeting(name));
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [name]);
 
   return (
     <VStack zIndex={1} h={'100vh'} p={4}>
       <HStack position={'absolute'} top={4}>
         <MoodSelector />
-        <IconButton
-          aria-label="Toggle color mode"
-          icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
-          onClick={toggleColorMode}
-        />
+        {/* <ColorModeToggle /> */}
       </HStack>
       <Spacer />
       <VStack>
-        <Heading size="4xl">{currentTime}</Heading>
-        <Heading>{greeting}</Heading>
+        <Heading fontSize={'7rem'} shadow={'md'}>
+          {currentTime}
+        </Heading>
+        <Heading shadow={'md'}>{greeting}</Heading>
       </VStack>
       <Spacer />
       <VStack position={'absolute'} bottom={4}>
-        <Text fontSize={'lg'}>
-          "Every morning is an opportunity for success"
-        </Text>
+        <Quote />
         <PoweredByLeap />
       </VStack>
     </VStack>

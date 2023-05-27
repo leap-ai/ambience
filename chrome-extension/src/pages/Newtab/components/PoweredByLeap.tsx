@@ -15,8 +15,12 @@ export default function PoweredByLeap() {
     <HStack
       gap={0}
       h={10}
-      opacity={isLogoLoaded ? 0.8 : 0}
-      transition="opacity 0.5s linear"
+      opacity={isLogoLoaded ? 0.4 : 0}
+      transition="opacity 0.3s linear"
+      as={'a'}
+      target="_blank"
+      href="https://tryleap.ai"
+      _hover={{ opacity: 1 }}
     >
       <Text fontSize={'xs'} display={isLogoLoaded ? 'flex' : 'none'}>
         powered by

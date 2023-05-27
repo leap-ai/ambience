@@ -1,6 +1,16 @@
-import { VStack } from '@chakra-ui/react';
+import {
+  Box,
+  HStack,
+  Heading,
+  IconButton,
+  Input,
+  Text,
+  VStack,
+} from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import MainDisplay from './components/MainDisplay';
+import { FaAngleRight } from 'react-icons/fa';
+import NameSelection from './components/NameSelection';
 
 const fetchImage = async () => {
   try {
@@ -23,9 +33,14 @@ const fetchImage = async () => {
 const Newtab = () => {
   const [imageUrl, setImageUrl] = useState('');
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [name, setName] = useState('');
 
   useEffect(() => {
     fetchImage().then(setImageUrl);
+    const storedName = localStorage.getItem('name');
+    if (storedName) {
+      setName(storedName);
+    }
   }, []);
 
   const handleImageLoaded = () => {
@@ -49,7 +64,7 @@ const Newtab = () => {
         onLoad={handleImageLoaded}
         style={{
           position: 'absolute',
-          zIndex: 1,
+          zIndex: 0,
           height: '100%',
           width: '100%',
           objectFit: 'cover',
@@ -58,8 +73,13 @@ const Newtab = () => {
           pointerEvents: 'none',
         }}
       />
-
-      <MainDisplay />
+      <VStack zIndex={1}>
+        {!name ? (
+          <NameSelection setName={setName} />
+        ) : (
+          <MainDisplay name={name} />
+        )}
+      </VStack>
     </VStack>
   );
 };
