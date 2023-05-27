@@ -47,10 +47,11 @@ const MainDisplay = ({ name }: { name: string }) => {
         {/* <ColorModeToggle /> */}
       </HStack>
       <Spacer />
-      <VStack userSelect={'none'}>
+      <VStack userSelect={'none'} textAlign={'center'}>
         <Heading
           fontSize={'7rem'}
           textShadow={'0px 2px 4px rgba(0, 0, 0, 0.15)'}
+          lineHeight={1}
         >
           {currentTime}
         </Heading>
@@ -59,7 +60,7 @@ const MainDisplay = ({ name }: { name: string }) => {
         </Heading>
       </VStack>
       <Spacer />
-      <VStack position={'absolute'} bottom={4}>
+      <VStack position={'absolute'} bottom={4} px={8} textAlign={'center'}>
         <Quote />
         <PoweredByLeap />
       </VStack>

@@ -32,7 +32,7 @@ export default function Quote() {
       opacity={quote ? 1 : 0}
       transition="opacity 0.7s linear"
     >
-      "{quote}"
+      {quote && `"${quote}"`}
     </Text>
   );
 }
