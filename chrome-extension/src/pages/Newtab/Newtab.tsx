@@ -1,5 +1,5 @@
+import { VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { Box, VStack } from '@chakra-ui/react';
 import MainDisplay from './components/MainDisplay';
 
 const fetchImage = async () => {
@@ -42,7 +42,6 @@ const Newtab = () => {
       alignItems="center"
       position="relative"
       overflow="hidden"
-      zIndex={-1}
     >
       <img
         src={imageUrl}
@@ -56,6 +55,7 @@ const Newtab = () => {
           objectFit: 'cover',
           opacity: imageLoaded ? 1 : 0,
           transition: 'opacity 0.8s ease-in',
+          pointerEvents: 'none',
         }}
       />
 
