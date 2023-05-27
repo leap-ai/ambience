@@ -55,6 +55,8 @@ function getRandomPrompt() {
 export async function GET(request: Request) {
   const { data, error } = await leap.generate.createInferenceJob({
     prompt: getRandomPrompt(),
+    negativePrompt:
+      "blurry, lowres, ugly, boring, poor lighting, dull, unclear, duplicate, error, low quality, out of frame, watermark, signature",
     numberOfImages: 1,
     webhookUrl: process.env.INSERT_IMAGE_WEBHOOK_URL,
     height: 512,
@@ -64,7 +66,6 @@ export async function GET(request: Request) {
 
   if (error) {
     console.log(error);
-    // print the current node runtime
     return NextResponse.json(
       {
         error,
