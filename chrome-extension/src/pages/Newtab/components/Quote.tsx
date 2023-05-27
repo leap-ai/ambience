@@ -20,13 +20,19 @@ const fetchQuote = async () => {
 };
 
 export default function Quote() {
-  const [quote, setQuote] = useState('');
+  const [quote, setQuote] = useState(null);
 
   useEffect(() => {
     fetchQuote().then(setQuote).catch(console.error);
   }, []);
 
-  if (!quote) return <></>;
-
-  return <Text fontSize={'lg'}>"{quote}"</Text>;
+  return (
+    <Text
+      fontSize={'lg'}
+      opacity={quote ? 1 : 0}
+      transition="opacity 0.7s linear"
+    >
+      "{quote}"
+    </Text>
+  );
 }

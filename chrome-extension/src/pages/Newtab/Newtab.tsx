@@ -1,15 +1,6 @@
-import {
-  Box,
-  HStack,
-  Heading,
-  IconButton,
-  Input,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import MainDisplay from './components/MainDisplay';
-import { FaAngleRight } from 'react-icons/fa';
 import NameSelection from './components/NameSelection';
 
 const fetchImage = async () => {
