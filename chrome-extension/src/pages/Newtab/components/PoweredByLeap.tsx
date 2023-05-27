@@ -18,10 +18,14 @@ export default function PoweredByLeap() {
       transition="opacity 0.3s linear"
       as={'a'}
       target="_blank"
-      href="https://tryleap.ai"
+      href="https://tryleap.ai?utm_source=ambience&utm_medium=extension&utm_campaign=ambience-extension"
       _hover={{ opacity: 1 }}
     >
-      <Text fontSize={'xs'} display={isLogoLoaded ? 'flex' : 'none'}>
+      <Text
+        fontSize={'xs'}
+        display={isLogoLoaded ? 'flex' : 'none'}
+        userSelect={'none'}
+      >
         powered by
       </Text>
       <Image
