@@ -2,7 +2,6 @@ import {
   HStack,
   Heading,
   IconButton,
-  Image,
   Spacer,
   Text,
   VStack,
@@ -11,6 +10,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import MoodSelector from './MoodSelector';
+import PoweredByLeap from './PoweredByLeap';
 
 const getCurrentTime = () =>
   new Date().toLocaleTimeString([], {
@@ -64,10 +64,7 @@ const MainDisplay = () => {
         <Text fontSize={'lg'}>
           "Every morning is an opportunity for success"
         </Text>
-        <HStack>
-          <Text fontSize={'xs'}>Powered by</Text>
-          <Image src="/leap-logo-white.svg" h={4} />
-        </HStack>
+        <PoweredByLeap />
       </VStack>
     </VStack>
   );

@@ -1,13 +1,23 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, extendTheme, ColorModeScript } from '@chakra-ui/react';
 
 import Newtab from './Newtab';
 
+const theme = extendTheme({
+  config: {
+    initialColorMode: 'dark',
+    useSystemColorMode: false,
+  },
+});
+
 const container = document.getElementById('app-container');
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const root = createRoot(container);
 root.render(
-  <ChakraProvider>
-    <Newtab />
-  </ChakraProvider>
+  <>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+    <ChakraProvider theme={theme}>
+      <Newtab />
+    </ChakraProvider>
+  </>
 );
