@@ -9,6 +9,17 @@ const theme = extendTheme({
     initialColorMode: 'dark',
     useSystemColorMode: false,
   },
+  components: {
+    Modal: {
+      baseStyle: {
+        dialog: {
+          bg: 'blackAlpha.700',
+
+          backdropFilter: 'blur(16px)',
+        },
+      },
+    },
+  },
 });
 
 const container = document.getElementById('app-container');
