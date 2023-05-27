@@ -4,14 +4,14 @@ import {
   Heading,
   SimpleGrid,
   Spacer,
-  Text,
   VStack,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import AboutModal from './AboutModal';
 import PoweredByLeap from './PoweredByLeap';
 import Quote from './Quote';
 import SettingsModal from './SettingsModal';
-import AboutModal from './AboutModal';
+import { ImageObject } from '../Newtab';
 
 const getCurrentTime = () => {
   const dateObj = new Date();
@@ -40,9 +40,11 @@ const getGreeting = (name: string) => {
 const MainDisplay = ({
   name,
   setName,
+  image,
 }: {
   name: string;
   setName: (name: string) => void;
+  image: ImageObject | null;
 }) => {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
   const [greeting, setGreeting] = useState(getGreeting(name));
@@ -102,7 +104,7 @@ const MainDisplay = ({
         >
           <HStack>
             <SettingsModal setName={setName} />
-            <AboutModal />
+            {image && <AboutModal image={image} />}
           </HStack>
         </Flex>
         <Flex textAlign={'center'}>

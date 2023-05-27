@@ -14,20 +14,29 @@ const fetchImage = async () => {
       throw new Error('Invalid image url');
     }
 
-    return body.imageUrl;
+    return body;
   } catch (err) {
     console.error(err);
     return '';
   }
 };
 
+export type ImageObject = {
+  id: number;
+  imageUrl: string;
+  prompt: string;
+  seed: string;
+};
+
 const Newtab = () => {
-  const [imageUrl, setImageUrl] = useState('');
+  const [image, setImage] = useState<ImageObject | null>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [name, setName] = useState('');
 
+  console.log(image);
+
   useEffect(() => {
-    fetchImage().then(setImageUrl);
+    fetchImage().then(setImage);
     const storedName = localStorage.getItem('name');
     if (storedName) {
       setName(storedName);
@@ -50,7 +59,7 @@ const Newtab = () => {
       overflow="hidden"
     >
       <img
-        src={imageUrl}
+        src={image?.imageUrl}
         alt="Background"
         onLoad={handleImageLoaded}
         style={{
@@ -68,7 +77,7 @@ const Newtab = () => {
         {!name ? (
           <NameSelection setName={setName} />
         ) : (
-          <MainDisplay name={name} setName={setName} />
+          <MainDisplay name={name} setName={setName} image={image} />
         )}
       </VStack>
     </VStack>

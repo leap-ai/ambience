@@ -1,23 +1,21 @@
 import {
+  Box,
+  Heading,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  IconButton,
-  Text,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Stack,
-  Heading,
-  Button,
-  Box,
+  Text,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { useDisclosure } from '@chakra-ui/react';
-import { FaCog } from 'react-icons/fa';
 import React from 'react';
+import { ImageObject } from '../Newtab';
 
-function AboutModal() {
+function AboutModal({ image }: { image: ImageObject }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -50,7 +48,7 @@ function AboutModal() {
               <Stack>
                 <Heading size={'sm'}>Image Prompt</Heading>
                 <Box bg={'blackAlpha.200'} p={4} rounded={'md'}>
-                  <Text>Lorem ipsum, etc, etc.</Text>
+                  <Text>{image.prompt}</Text>
                 </Box>
               </Stack>
             </Stack>
