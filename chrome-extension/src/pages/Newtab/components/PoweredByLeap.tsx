@@ -14,7 +14,6 @@ export default function PoweredByLeap() {
   return (
     <HStack
       gap={0}
-      h={10}
       opacity={isLogoLoaded ? 0.4 : 0}
       transition="opacity 0.3s linear"
       as={'a'}
