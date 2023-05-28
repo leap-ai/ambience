@@ -2,6 +2,7 @@ import { VStack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import MainDisplay from './components/MainDisplay';
 import NameSelection from './components/NameSelection';
+import TopRightButtons from './components/TopRightButtons';
 
 const fetchImage = async () => {
   try {
@@ -71,6 +72,7 @@ const Newtab = () => {
           pointerEvents: 'none',
         }}
       />
+      <TopRightButtons />
       <VStack zIndex={1}>
         {!name ? (
           <NameSelection setName={setName} />

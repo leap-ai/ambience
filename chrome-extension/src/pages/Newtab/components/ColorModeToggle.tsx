@@ -9,6 +9,7 @@ export default function ColorModeToggle() {
       aria-label="Toggle color mode"
       icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
       onClick={toggleColorMode}
+      size={'sm'}
     />
   );
 }

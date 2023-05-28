@@ -1,11 +1,14 @@
-import { HStack, Image, Text } from '@chakra-ui/react';
+import { HStack, Image, Text, useColorMode } from '@chakra-ui/react';
 import React, { useState } from 'react';
 
 // @ts-ignore
-import logo from '../../../assets/img/leap-logo-white.svg';
+import whiteLogo from '../../../assets/img/leap-logo-white.svg';
+// @ts-ignore
+import blackLogo from '../../../assets/img/leap-logo-black.svg';
 
 export default function PoweredByLeap() {
   const [isLogoLoaded, setIsLogoLoaded] = useState(false);
+  const { colorMode } = useColorMode();
 
   const handleLogoLoad = () => {
     setIsLogoLoaded(true);
@@ -29,7 +32,7 @@ export default function PoweredByLeap() {
         powered by
       </Text>
       <Image
-        src={logo}
+        src={colorMode === 'light' ? blackLogo : whiteLogo}
         h={3}
         onLoad={handleLogoLoad}
         display={isLogoLoaded ? 'flex' : 'none'}

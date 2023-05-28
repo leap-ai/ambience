@@ -5,6 +5,7 @@ import {
   Input,
   Text,
   VStack,
+  useColorMode,
 } from '@chakra-ui/react';
 import React, { FormEvent, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa';
@@ -15,6 +16,7 @@ interface Props {
 
 const NameSelection: React.FC<Props> = ({ setName }) => {
   const [inputName, setInputName] = useState<string>('');
+  const { colorMode } = useColorMode();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -24,7 +26,7 @@ const NameSelection: React.FC<Props> = ({ setName }) => {
 
   return (
     <VStack
-      bg={'blackAlpha.400'}
+      bg={colorMode === 'dark' ? 'blackAlpha.400' : 'whiteAlpha.600'}
       p={12}
       backdropFilter={'blur(14px)'}
       rounded={'xl'}
