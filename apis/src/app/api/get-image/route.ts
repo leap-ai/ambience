@@ -10,6 +10,7 @@ export async function GET(request: Request) {
     .from("images")
     .select("*")
     .limit(1)
+    .or("device.eq.desktop,device.is.null")
     .order("id", { ascending: false });
 
   if (error) {

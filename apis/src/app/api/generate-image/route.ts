@@ -23,7 +23,6 @@ function getRandomPrompt() {
 
 export async function GET(request: Request) {
   const prompt = getRandomPrompt();
-  const randomSeed = Math.floor(Math.random() * 9000000000) + 1000000000;
   const jobId = randomUUID();
 
   const { data, error } = await leap.generate.createInferenceJob({
@@ -32,12 +31,24 @@ export async function GET(request: Request) {
       "blurry, lowres, ugly, boring, poor lighting, dull, unclear, duplicate, error, low quality, out of frame, watermark, signature",
     numberOfImages: 1,
     webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=desktop&jobId=${jobId}`,
-    height: 512,
+    height: 576,
     width: 1024,
     upscaleBy: "x2",
     steps: 60,
-    seed: randomSeed,
   });
+
+  if (error || !data) {
+    console.error(error);
+    return NextResponse.json(
+      {
+        error,
+        message: "Error generating desktop image",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 
   const { data: mobileData, error: mobileError } =
     await leap.generate.createInferenceJob({
@@ -46,18 +57,20 @@ export async function GET(request: Request) {
         "blurry, lowres, ugly, boring, poor lighting, dull, unclear, duplicate, error, low quality, out of frame, watermark, signature",
       numberOfImages: 1,
       webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=mobile&jobId=${jobId}`,
-      height: 512,
-      width: 1024,
+      width: 576,
+      height: 1024,
       upscaleBy: "x2",
       steps: 60,
-      seed: randomSeed,
+      seed: (await data).seed,
     });
 
   if (error || mobileError) {
-    console.log(error);
+    console.error(error);
+    console.error(mobileError);
     return NextResponse.json(
       {
         error,
+        message: "Error generating mobile image",
       },
       {
         status: 500,
