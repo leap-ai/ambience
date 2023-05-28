@@ -35,7 +35,6 @@ export const prompts = [
   "CYMK color explosion; spotlit complementary colors, graphic design-inspired style, bright and bold, captured with a high shutter speed",
   "modern city skyline at dusk, featuring iconic buildings and reflections; twilight glow, architectural photography style, cool blues and rich orange hues, taken with a tripod and a long exposure setting",
   "ancient abandoned temple overtaken by nature; mystical sunlight filtering through, archaeological style, muted earth tones and greens, photographed with a lead-in lines composition technique",
-  "intricate henna design on hands; natural ambient lighting, traditional Indian art style, warm browns and reds, taken with a close-up lens",
   "vast mountain range, with peaks that pierce the sky; high-altitude sunlight, majestic landscape style, earthy colors, captured with a wide field of view and a panoramic lens",
   "whimsical carousel, with ornate and brightly painted horses; vividly colored lighting, nostalgic amusement park style, vibrant and playful color palette, shot with a motion blur effect",
   "cosmic nebula, swirling with vivid colors and sparkling stars; soft celestial glow, immersive space art style, deep blues and vibrant colors, created with digital art software",
