@@ -30,6 +30,7 @@ export async function POST(request: Request) {
     prompt: body.result.prompt,
     seed: body.result.seed,
     modelId: body.result.modelId,
+    steps: body.result.steps,
   };
 
   const { data, error } = await supabase.from("images").insert([newRow]);
