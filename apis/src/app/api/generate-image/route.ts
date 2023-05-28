@@ -54,8 +54,8 @@ export async function GET(request: Request) {
     });
 
   if (error || mobileError) {
-    console.log(error);
-    console.log(mobileError);
+    console.error(error);
+    console.error(mobileError);
     return NextResponse.json(
       {
         error,
