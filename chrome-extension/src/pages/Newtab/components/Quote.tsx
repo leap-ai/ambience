@@ -3,9 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const fetchQuote = async () => {
   try {
-    const response = await fetch(
-      'https://ambience-kappa.vercel.app/api/get-quote'
-    );
+    const response = await fetch('https://api.ambience.page/api/get-quote');
     const body = await response.json();
 
     if (!body.quote) {

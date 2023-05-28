@@ -5,9 +5,7 @@ import NameSelection from './components/NameSelection';
 
 const fetchImage = async () => {
   try {
-    const response = await fetch(
-      'https://ambience-kappa.vercel.app/api/get-image'
-    );
+    const response = await fetch('https://api.ambience.page/api/get-image');
     const body = await response.json();
 
     if (!body.imageUrl) {

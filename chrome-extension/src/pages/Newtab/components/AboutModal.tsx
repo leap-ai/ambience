@@ -15,7 +15,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
-import { FaCopy, FaDownload } from 'react-icons/fa';
+import { FaCopy, FaDownload, FaLink } from 'react-icons/fa';
 import { ImageObject } from '../Newtab';
 import { useClipboard } from '@chakra-ui/react';
 
@@ -50,6 +50,22 @@ function AboutModal({ image }: { image: ImageObject }) {
                   Both the image and the quote you're seeing were generated
                   using Leap AI.
                 </Text>
+              </Stack>
+              <Stack>
+                <Heading size={'sm'}>Want more wallpapers?</Heading>
+                <Text>
+                  Browse the full gallery of current plus past Ambience
+                  wallpapers.
+                </Text>
+                <Button
+                  rightIcon={<FaLink />}
+                  as="a"
+                  target="_blank"
+                  href={'https://wallpapers.fyi'}
+                  download
+                >
+                  Browse All
+                </Button>
               </Stack>
               <Stack>
                 <Heading size={'sm'}>Image Prompt</Heading>
