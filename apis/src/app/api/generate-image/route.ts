@@ -42,6 +42,7 @@ export async function GET(request: Request) {
     return NextResponse.json(
       {
         error,
+        message: "Error generating desktop image",
       },
       {
         status: 500,
@@ -69,6 +70,7 @@ export async function GET(request: Request) {
     return NextResponse.json(
       {
         error,
+        message: "Error generating mobile image",
       },
       {
         status: 500,

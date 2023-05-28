@@ -8,7 +8,6 @@ export const prompts = [
   "futuristic city skyline, illuminated by neon lights and holograms; glowing artificial lights, cyberpunk style, electric color scheme, captured with a long exposure technique",
   "captivating aurora borealis, a natural light show in the polar sky; soft ambient glow, panoramic landscape style, shifting color gradients, photographed with a DSLR camera and a wide field of view",
   "flower field in full bloom, creating a breathtaking color palette; golden hour lighting, botanical illustration style, vibrant and varied floral colors, shot with a telephoto lens",
-  "classic arcade game characters, designed in a pixel art style; directional 8-bit lighting, nostalgic retro style, primary color palette, rendered with a digital art program",
   "zen garden with raked sand patterns and carefully placed stones; serene natural light, Asian-inspired style, monochrome color scheme, captured with a shallow depth of field",
   "topographical map, showcasing the beauty of Earth's diverse landscapes; sunlit aerial view, cartographic style, subtle and earthy tones, digital rendering with a 3D camera",
   "origami-inspired art, transforming paper into intricate 3D shapes; strong spotlighting, contemporary art style, pastel color palette, shot with a precisely focused camera",
