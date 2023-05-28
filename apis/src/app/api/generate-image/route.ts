@@ -23,7 +23,6 @@ function getRandomPrompt() {
 
 export async function GET(request: Request) {
   const prompt = getRandomPrompt();
-  const randomSeed = Math.floor(Math.random() * 999999999);
   const jobId = randomUUID();
 
   const { data, error } = await leap.generate.createInferenceJob({
@@ -36,8 +35,19 @@ export async function GET(request: Request) {
     width: 1024,
     upscaleBy: "x2",
     steps: 60,
-    seed: randomSeed,
   });
+
+  if (error || !data) {
+    console.error(error);
+    return NextResponse.json(
+      {
+        error,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 
   const { data: mobileData, error: mobileError } =
     await leap.generate.createInferenceJob({
@@ -50,7 +60,7 @@ export async function GET(request: Request) {
       height: 1024,
       upscaleBy: "x2",
       steps: 60,
-      seed: randomSeed,
+      seed: (await data).seed,
     });
 
   if (error || mobileError) {
