@@ -1,5 +1,6 @@
 import { prompts } from "@/lib/imagePrompts";
 import { leap } from "@/lib/leap";
+import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
 
 if (!process.env.INSERT_IMAGE_WEBHOOK_URL) {
@@ -21,19 +22,38 @@ function getRandomPrompt() {
 }
 
 export async function GET(request: Request) {
+  const prompt = getRandomPrompt();
+  const randomSeed = Math.floor(Math.random() * 9000000000) + 1000000000;
+  const jobId = randomUUID();
+
   const { data, error } = await leap.generate.createInferenceJob({
-    prompt: getRandomPrompt(),
+    prompt,
     negativePrompt:
       "blurry, lowres, ugly, boring, poor lighting, dull, unclear, duplicate, error, low quality, out of frame, watermark, signature",
     numberOfImages: 1,
-    webhookUrl: process.env.INSERT_IMAGE_WEBHOOK_URL,
+    webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=desktop&jobId=${jobId}`,
     height: 512,
     width: 1024,
     upscaleBy: "x2",
     steps: 60,
+    seed: randomSeed,
   });
 
-  if (error) {
+  const { data: mobileData, error: mobileError } =
+    await leap.generate.createInferenceJob({
+      prompt,
+      negativePrompt:
+        "blurry, lowres, ugly, boring, poor lighting, dull, unclear, duplicate, error, low quality, out of frame, watermark, signature",
+      numberOfImages: 1,
+      webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=mobile&jobId=${jobId}`,
+      height: 512,
+      width: 1024,
+      upscaleBy: "x2",
+      steps: 60,
+      seed: randomSeed,
+    });
+
+  if (error || mobileError) {
     console.log(error);
     return NextResponse.json(
       {
@@ -47,5 +67,6 @@ export async function GET(request: Request) {
 
   return NextResponse.json({
     data,
+    mobileData,
   });
 }
