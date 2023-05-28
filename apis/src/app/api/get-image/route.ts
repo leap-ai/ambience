@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     .from("images")
     .select("id,imageUrl,prompt,seed")
     .limit(1)
-    .order("created_at", { ascending: false });
+    .order("id", { ascending: false });
 
   if (error) {
     console.error(error);
