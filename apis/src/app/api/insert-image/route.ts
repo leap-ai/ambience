@@ -24,20 +24,22 @@ export async function POST(request: Request) {
 
   // Grab first image from body.images array
   const image = body.result.images[0] as LeapImageSchema;
-  console.log({ imageUri: image.uri });
 
-  const { data, error } = await supabase.from("images").insert([
-    {
-      imageUrl: image.uri,
-      prompt: body.result.prompt,
-      seed: body.result.seed,
-    },
-  ]);
+  const newRow = {
+    imageUrl: image.uri,
+    prompt: body.result.prompt,
+    seed: body.result.seed,
+    modelId: body.result.modelId,
+  };
+
+  const { data, error } = await supabase.from("images").insert([newRow]);
 
   if (error) {
     console.error(error);
     return NextResponse.error();
   }
+
+  console.log(newRow);
 
   return NextResponse.json({
     message: "Image inserted",

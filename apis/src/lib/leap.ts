@@ -5,6 +5,6 @@ if (!process.env.LEAP_API_KEY) {
 }
 
 const leap = new Leap(process.env.LEAP_API_KEY);
-leap.usePublicModel("sd-1.5");
+leap.useModel("eab32df0-de26-4b83-a908-a83f3015e971");
 
 export { leap };

@@ -30,6 +30,7 @@ export async function GET(request: Request) {
     height: 512,
     width: 1024,
     upscaleBy: "x2",
+    steps: 60,
   });
 
   if (error) {
