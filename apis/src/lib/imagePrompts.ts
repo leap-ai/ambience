@@ -30,7 +30,6 @@ export const prompts = [
   "gorgeous view of rolling hills, blanketed by a sea of fog; misty, diffused light, atmospheric landscape style, soothing green and gray tones, photographed with a high-quality panoramic lens",
   "bright and energetic color gradient, transitioning seamlessly from hue to hue; smooth, radiant light, digital art style, intense and bold color spectrum, designed with a graphic software program",
   "desert landscape under a starry night sky; gentle moonlight, artistic desert composition, warm earthy hues, captured with a wide-aperture lens",
-  "classic car rally, showcasing a vintage automobile collection; sunny outdoor lighting, retro automotive style, bright and bold colors, photographed with a dynamic lens",
   "tropical beach scene at sunrise, with swaying palm trees and white sands; warm golden light, idyllic vacation style, vivid sky and ocean tones, captured with a high-quality wide-angle lens",
   "CYMK color explosion; spotlit complementary colors, graphic design-inspired style, bright and bold, captured with a high shutter speed",
   "modern city skyline at dusk, featuring iconic buildings and reflections; twilight glow, architectural photography style, cool blues and rich orange hues, taken with a tripod and a long exposure setting",
