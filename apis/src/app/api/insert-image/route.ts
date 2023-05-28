@@ -6,6 +6,9 @@ import { supabase } from "@/lib/supabase";
 
 export async function POST(request: Request) {
   const body = await request.json();
+  const { searchParams } = new URL(request.url);
+  const jobId = searchParams.get("jobId");
+  const device = searchParams.get("device");
 
   if (!body) {
     return NextResponse.error();
@@ -31,6 +34,8 @@ export async function POST(request: Request) {
     seed: body.result.seed,
     modelId: body.result.modelId,
     steps: body.result.steps,
+    jobId: jobId,
+    device: device,
   };
 
   const { data, error } = await supabase.from("images").insert([newRow]);

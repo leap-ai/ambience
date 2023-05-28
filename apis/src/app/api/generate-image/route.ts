@@ -24,14 +24,14 @@ function getRandomPrompt() {
 export async function GET(request: Request) {
   const prompt = getRandomPrompt();
   const randomSeed = Math.floor(Math.random() * 9000000000) + 1000000000;
-  const uniqueId = randomUUID();
+  const jobId = randomUUID();
 
   const { data, error } = await leap.generate.createInferenceJob({
     prompt,
     negativePrompt:
       "blurry, lowres, ugly, boring, poor lighting, dull, unclear, duplicate, error, low quality, out of frame, watermark, signature",
     numberOfImages: 1,
-    webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=desktop&uniqueId=${uniqueId}`,
+    webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=desktop&jobId=${jobId}`,
     height: 512,
     width: 1024,
     upscaleBy: "x2",
@@ -45,7 +45,7 @@ export async function GET(request: Request) {
       negativePrompt:
         "blurry, lowres, ugly, boring, poor lighting, dull, unclear, duplicate, error, low quality, out of frame, watermark, signature",
       numberOfImages: 1,
-      webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=mobile&uniqueId=${uniqueId}`,
+      webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=mobile&jobId=${jobId}`,
       height: 512,
       width: 1024,
       upscaleBy: "x2",
