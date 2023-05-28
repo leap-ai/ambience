@@ -8,7 +8,7 @@ export const revalidate = 60;
 export async function GET(request: Request) {
   let { data: images, error } = await supabase
     .from("images")
-    .select("id,imageUrl,prompt,seed")
+    .select("*")
     .limit(1)
     .order("id", { ascending: false });
 
