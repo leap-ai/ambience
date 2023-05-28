@@ -23,7 +23,7 @@ function getRandomPrompt() {
 
 export async function GET(request: Request) {
   const prompt = getRandomPrompt();
-  const randomSeed = Math.floor(Math.random() * 9000000000) + 1000000000;
+  const randomSeed = Math.floor(Math.random() * 999999999);
   const jobId = randomUUID();
 
   const { data, error } = await leap.generate.createInferenceJob({
