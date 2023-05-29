@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "version": "1.0.29",
+  "version": "1.0.30",
   "name": "Ambience AI",
   "description": "Replace your new tab with limitless AI-generated wallpapers & quotes that refresh every hour.",
   "chrome_url_overrides": {
