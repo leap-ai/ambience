@@ -17,7 +17,7 @@ export default function PoweredByLeap() {
   return (
     <HStack
       gap={0}
-      opacity={isLogoLoaded ? 0.4 : 0}
+      opacity={isLogoLoaded ? 0.8 : 0}
       transition="opacity 0.3s linear"
       as={'a'}
       target="_blank"
@@ -28,6 +28,8 @@ export default function PoweredByLeap() {
         fontSize={'xs'}
         display={isLogoLoaded ? 'flex' : 'none'}
         userSelect={'none'}
+        fontWeight={'bold'}
+        textShadow={'0px 2px 6px rgba(0, 0, 0, 0.4)'}
       >
         powered by
       </Text>
@@ -36,6 +38,7 @@ export default function PoweredByLeap() {
         h={3}
         onLoad={handleLogoLoad}
         display={isLogoLoaded ? 'flex' : 'none'}
+        textShadow={'0px 2px 6px rgba(0, 0, 0, 0.4)'}
       />
     </HStack>
   );

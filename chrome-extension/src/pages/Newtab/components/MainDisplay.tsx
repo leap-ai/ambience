@@ -4,6 +4,7 @@ import {
   Heading,
   SimpleGrid,
   Spacer,
+  Text,
   VStack,
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
@@ -102,10 +103,7 @@ const MainDisplay = ({
             md: 'flex',
           }}
         >
-          <HStack>
-            <SettingsModal setName={setName} />
-            {image && <AboutModal image={image} />}
-          </HStack>
+          <HStack>{image && <AboutModal image={image} />}</HStack>
         </Flex>
         <Flex textAlign={'center'}>
           <Quote />

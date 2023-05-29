@@ -72,7 +72,7 @@ const Newtab = () => {
           pointerEvents: 'none',
         }}
       />
-      <TopRightButtons />
+      <TopRightButtons setName={setName} />
       <VStack zIndex={1}>
         {!name ? (
           <NameSelection setName={setName} />

@@ -11,6 +11,7 @@ import {
   ModalOverlay,
   Stack,
   Text,
+  Tooltip,
   useDisclosure,
 } from '@chakra-ui/react';
 import React from 'react';
@@ -27,12 +28,14 @@ function SettingsModal({ setName }: { setName: (name: string) => void }) {
 
   return (
     <>
-      <IconButton
-        size={'xs'}
-        icon={<FaCog />}
-        aria-label="Settings"
-        onClick={onOpen}
-      ></IconButton>
+      <Tooltip label="Settings">
+        <IconButton
+          size={'sm'}
+          icon={<FaCog />}
+          aria-label="Settings"
+          onClick={onOpen}
+        ></IconButton>
+      </Tooltip>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
