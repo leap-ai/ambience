@@ -32,8 +32,6 @@ const Newtab = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [name, setName] = useState('');
 
-  console.log(image);
-
   useEffect(() => {
     fetchImage().then(setImage);
     const storedName = localStorage.getItem('name');
