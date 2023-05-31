@@ -19,6 +19,10 @@ This repository houses the open-source code for developers to fork and draw insp
 Witness the charm of Ambience by installing it directly from the Chrome Store:
 [Ambience AI Chrome Store](https://chrome.google.com/webstore/detail/ambience-ai/ndgjbbjefciomenkpggaepmhbkhmapap)
 
+## Read The Guide
+
+Read the companion guide to this repo that explains how everything works step by step: [Guide](https://www.tryleap.ai/docs/build-ambience-ai-generated-wallpaper-chrome-extension)
+
 ## Leap API: The creative force behind Ambience
 
 Ambience harnesses the powerful Leap API to generate mesmerizing images on the fly. This suite of AI APIs brings life to every new tab, presenting you with vibrant, ever-changing wallpapers on the go.
