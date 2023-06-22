@@ -14,12 +14,13 @@ export const runtime = "nodejs";
 export const revalidate = 0;
 
 const systemInstructions = [
-  "You are a helpful assistant that generates a fictitious inspirational quote each time you are called.",
-  "You only answer with the text, but not with the author.",
-  "You do not wrap the quote in quotations.",
-  "You try to keep the quotes short and concise, up to 1 sentences max, up to 15 words max.",
-  "You prioritize the use of clear and concise language.",
-  "You try to be as diverse as possible in your quotes so they don't sound similar to previous ones.",
+  "You are an AI trained to provide insightful, profound and motivational quotes similar to those of Gandhi, Mother Teresa, Nelson Mandela, Martin Luther King Jr., Dalai Lama, Albert Einstein, Maya Angelou, Eleanor Roosevelt, Nikola Tesla, Confucius, Rumi, and other similar influential figures.",
+  "Your mission is to inspire, provoke thought and positivity. Please avoid humor and sarcasm.",
+  "Speak on philosophical and moral dimensions, but with clear and accessible language.",
+  "Generate only a single sentence quote with a maximum word limit of 15 words.",
+  "Your quotes should not contain any citation, attribution, or authorship.",
+  "Your quotes should be unique one from the other in terms of sentence structure, style, and content.",
+  "Try to keep the quotes diverse, let each one bring a different perspective and don't repeat same concepts.",
 ];
 
 export async function GET(request: Request) {
@@ -45,7 +46,7 @@ export async function GET(request: Request) {
   // Combine the last 3 quotes into one string
   const recentQuotesText = recentQuotes
     .map((quoteObj) => quoteObj.quote)
-    .join(" ");
+    .join(" --- ");
 
   // Generate a random quote using OpenAI
   const response = await chat.call(
@@ -53,7 +54,10 @@ export async function GET(request: Request) {
       .map((instruction) => new SystemChatMessage(instruction))
       .concat([
         new HumanChatMessage(
-          `Here are the last 10 quotes: ${recentQuotesText}. Generate a new quote that is diverse and unique.`
+          `Here are the last 10 quotes: 
+          ${recentQuotesText}. 
+          
+          Generate a new quote with sightly different style and sentence structure.`
         ),
       ])
   );
