@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@leap-ai/sdk": "^0.0.119",
     "@supabase/supabase-js": "^2.22.0",
@@ -17,7 +20,7 @@
     "encoding": "^0.1.13",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
-    "langchain": "^0.0.84",
+    "langchain": "^0.0.103",
     "next": "13.4.3",
     "node-fetch": "^3.3.1",
     "react": "18.2.0",

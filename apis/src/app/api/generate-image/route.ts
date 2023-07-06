@@ -2,7 +2,7 @@ import { leap } from "@/lib/leap";
 import { supabase } from "@/lib/supabase";
 import { randomUUID } from "crypto";
 import { ChatOpenAI } from "langchain/chat_models/openai";
-import { HumanChatMessage, SystemChatMessage } from "langchain/schema";
+import { HumanMessage, SystemMessage } from "langchain/schema";
 import { NextResponse } from "next/server";
 
 if (!process.env.INSERT_IMAGE_WEBHOOK_URL) {
@@ -33,7 +33,6 @@ export async function GET(request: Request) {
     .limit(30);
 
   if (quoteError) {
-    console.log(quoteError);
     return NextResponse.json(
       {
         error: quoteError,
@@ -49,9 +48,8 @@ export async function GET(request: Request) {
     .map((quoteObj) => quoteObj.prompt)
     .join(" --- ");
 
-  // Generate a random quote using OpenAI
   const response = await chat.call([
-    new SystemChatMessage(`
+    new SystemMessage(`
       You are a helpful assistant that generates text prompts for beautiful wallpapers each time you are called.
       You always generate a unique prompt that is diverse and unique.
       You do not repeat any of the previous prompts.
@@ -64,7 +62,7 @@ export async function GET(request: Request) {
       The prompt itself should be phrased naturally.
       Exclude all people and commentary from the prompt and ensure the description is unique each time.
     `),
-    new HumanChatMessage(
+    new HumanMessage(
       `Here are the last 30 image prompts, separated by a triple dash (---): ${recentPromptString}. 
             
       Give one new prompt for a beautiful wallpaper.`
