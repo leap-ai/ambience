@@ -30,7 +30,7 @@ export async function GET(request: Request) {
     .from("images")
     .select("prompt,id")
     .order("id", { ascending: false })
-    .limit(30);
+    .limit(20);
 
   if (quoteError) {
     return NextResponse.json(
@@ -63,14 +63,14 @@ export async function GET(request: Request) {
       Exclude all people and commentary from the prompt and ensure the description is unique each time.
     `),
     new HumanMessage(
-      `Here are the last 30 image prompts, separated by a triple dash (---): ${recentPromptString}. 
+      `Here are the last 20 image prompts, separated by a triple dash (---): ${recentPromptString}. 
             
       Give one new prompt for a beautiful wallpaper.`
     ),
   ]);
 
   const { data, error } = await leap.generate.createInferenceJob({
-    prompt: response.text,
+    prompt: response.content[0],
     negativePrompt,
     numberOfImages: 1,
     webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=desktop&jobId=${jobId}`,
