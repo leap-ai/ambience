@@ -65,7 +65,7 @@ export async function GET(request: Request) {
     new HumanMessage(
       `Here are the last 20 image prompts, separated by a triple dash (---): ${recentPromptString}.  
             
-      Give one new prompt for a beautiful wallpaper.`
+      Give a new prompt for a beautiful wallpaper.`
     ),
   ]);
 
