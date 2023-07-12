@@ -70,7 +70,7 @@ export async function GET(request: Request) {
   ]);
 
   const { data, error } = await leap.generate.createInferenceJob({
-    prompt: response.content[0],
+    prompt: response.content,
     negativePrompt,
     numberOfImages: 1,
     webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=desktop&jobId=${jobId}`,
@@ -95,7 +95,7 @@ export async function GET(request: Request) {
 
   const { data: mobileData, error: mobileError } =
     await leap.generate.createInferenceJob({
-      prompt: response.text,
+      prompt: response.content,
       negativePrompt,
       numberOfImages: 1,
       webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=mobile&jobId=${jobId}`,
