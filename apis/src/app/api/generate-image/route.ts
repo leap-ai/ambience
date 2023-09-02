@@ -74,10 +74,10 @@ export async function GET(request: Request) {
     negativePrompt,
     numberOfImages: 1,
     webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=desktop&jobId=${jobId}`,
-    height: 576,
-    width: 1024,
-    upscaleBy: "x2",
-    steps: 60,
+    width: 1920,
+    height: 1080,
+    upscaleBy: "x1",
+    steps: 50,
   });
 
   if (error || !data) {
@@ -99,10 +99,10 @@ export async function GET(request: Request) {
       negativePrompt,
       numberOfImages: 1,
       webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=mobile&jobId=${jobId}`,
-      width: 576,
-      height: 1024,
-      upscaleBy: "x2",
-      steps: 60,
+      width: 1080,
+      height: 1920,
+      upscaleBy: "x1",
+      steps: 50,
       seed: (await data).seed,
     });
 

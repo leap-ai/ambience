@@ -11,8 +11,9 @@ const models = {
   "OpenJourney v4": "1e7737d7-545e-469f-857f-e4b46eaa151d",
   "Stable Diffusion 1.5": "8b1b897c-d66d-45a6-b8d7-8e32421d02cf",
   "Stable Diffusion 2.1": "ee88d150-4259-4b77-9d0f-090abe29f650",
+  SDXL: "26a1a203-3a46-42cb-8cfa-f4de075907d8",
 };
 
-leap.useModel(models["Realistic Vision v2.0"]);
+leap.useModel(models["SDXL"]);
 
 export { leap };
