@@ -1,4 +1,3 @@
-import { LeapImageSchema } from "@leap-ai/sdk/dist/types/schemas/Image";
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 
@@ -26,7 +25,7 @@ export async function POST(request: Request) {
   }
 
   // Grab first image from body.images array
-  const image = body.result.images[0] as LeapImageSchema;
+  const image = body.result.images[0];
 
   const newRow = {
     imageUrl: image.uri,
