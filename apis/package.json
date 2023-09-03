@@ -12,7 +12,7 @@
     "node": "18.x"
   },
   "dependencies": {
-    "@leap-ai/sdk": "^0.0.119",
+    "@leap-ai/sdk": "^1.1.3",
     "@supabase/supabase-js": "^2.22.0",
     "@types/node": "20.2.3",
     "@types/react": "18.2.7",

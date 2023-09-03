@@ -69,22 +69,23 @@ export async function GET(request: Request) {
     ),
   ]);
 
-  const { data, error } = await leap.generate.createInferenceJob({
+  const { data, status, statusText } = await leap.images.generate({
     prompt: response.content,
     negativePrompt,
+    modelId: "26a1a203-3a46-42cb-8cfa-f4de075907d8",
     numberOfImages: 1,
     webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=desktop&jobId=${jobId}`,
     width: 1920,
     height: 1080,
-    upscaleBy: "x1",
     steps: 50,
   });
 
-  if (error || !data) {
-    console.error(error);
+  if (status !== 201 || !data) {
+    console.error(status, statusText);
     return NextResponse.json(
       {
-        error,
+        status,
+        statusText,
         message: "Error generating desktop image",
       },
       {
@@ -93,26 +94,29 @@ export async function GET(request: Request) {
     );
   }
 
-  const { data: mobileData, error: mobileError } =
-    await leap.generate.createInferenceJob({
-      prompt: response.content,
-      negativePrompt,
-      numberOfImages: 1,
-      webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=mobile&jobId=${jobId}`,
-      width: 1080,
-      height: 1920,
-      upscaleBy: "x1",
-      steps: 50,
-      seed: (await data).seed,
-    });
+  const {
+    data: mobileData,
+    status: mobileStatus,
+    statusText: mobileStatusText,
+  } = await leap.images.generate({
+    modelId: "26a1a203-3a46-42cb-8cfa-f4de075907d8",
+    prompt: response.content,
+    negativePrompt,
+    numberOfImages: 1,
+    webhookUrl: `${process.env.INSERT_IMAGE_WEBHOOK_URL}?device=mobile&jobId=${jobId}`,
+    width: 1080,
+    height: 1920,
+    steps: 50,
+    seed: data.seed,
+  });
 
-  if (error || mobileError) {
-    console.error(error);
-    console.error(mobileError);
+  if (mobileStatus !== 201 || !data) {
+    console.error(mobileStatus, mobileStatusText);
     return NextResponse.json(
       {
-        error,
-        message: "Error generating mobile image",
+        status,
+        mobileStatusText,
+        message: "Error generating desktop image",
       },
       {
         status: 500,
